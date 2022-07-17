@@ -1,0 +1,28 @@
+.auth__button {
+  margin-top: 216px;
+  border: none;
+  outline: none;
+  height: 50px;
+  background: #fff;
+  transition: opacity .25s linear;
+  border-radius: 2px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  color: #000;
+}
+
+.auth__button:hover {
+  opacity: .85;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 929px) {
+  .auth__button {
+    margin-top: 173px;
+    height: 46px;
+    font-size: 16px;
+    line-height: 1.19;
+  }
+}
