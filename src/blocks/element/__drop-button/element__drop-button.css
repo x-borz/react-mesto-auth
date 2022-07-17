@@ -1,0 +1,19 @@
+.element__drop-button {
+  position: absolute;
+  top: 18px;
+  right: 16px;
+  width: 18px;
+  height: 19px;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../../../images/trash-icon.svg");
+  opacity: 1;
+  transition: opacity .25s linear;
+}
+
+.element__drop-button:hover {
+  opacity: .6;
+  cursor: pointer;
+}
