@@ -9,6 +9,7 @@ import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import DeleteConfirmPopup from "./DeleteConfirmPopup";
+import {Route, Switch, Redirect} from 'react-router-dom';
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -19,6 +20,7 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(false);
 
   const handleEditAvatarClick = () => setIsEditAvatarPopupOpen(true);
 
@@ -117,43 +119,61 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Header />
-        <Main
-          cards={cards}
-          onEditProfile={handleEditProfileClick}
-          onAddPlace={handleAddPlaceClick}
-          onEditAvatar={handleEditAvatarClick}
-          onCardClick={handleCardClick}
-          onCardLike={handleCardLike}
-          onCardDeleteClick={handleCardDeleteClick}
-        />
-        <Footer />
+        <Switch>
+          <Route path="/sign-up">
+            {/*<Register />*/}
+            {loggedIn ? <></> : <Redirect to="/sign-in" />};
+          </Route>
+          <Route path="/sign-in">
+            {/*<Login />*/}
+          </Route>
+          <Route exact path="/">
+            {loggedIn ? (
+              <>
+                <Main
+                  cards={cards}
+                  onEditProfile={handleEditProfileClick}
+                  onAddPlace={handleAddPlaceClick}
+                  onEditAvatar={handleEditAvatarClick}
+                  onCardClick={handleCardClick}
+                  onCardLike={handleCardLike}
+                  onCardDeleteClick={handleCardDeleteClick}
+                />
+                <Footer />
 
-        <EditProfilePopup
-          isOpen={isEditProfilePopupOpen}
-          isLoading={isLoading}
-          onClose={closeAllPopups}
-          onUpdateUser={handleUpdateUser}
-        />
-        <EditAvatarPopup
-          isOpen={isEditAvatarPopupOpen}
-          isLoading={isLoading}
-          onClose={closeAllPopups}
-          onUpdateAvatar={handleUpdateAvatar}
-        />
-        <AddPlacePopup
-          isOpen={isAddPlacePopupOpen}
-          isLoading={isLoading}
-          onClose={closeAllPopups}
-          onAddPlace={handleAddPlace}
-        />
-        <DeleteConfirmPopup
-          isOpen={!!cardForDelete}
-          isLoading={isLoading}
-          onClose={closeAllPopups}
-          onDeletePlace={handleCardDelete}
-        />
+                <EditProfilePopup
+                  isOpen={isEditProfilePopupOpen}
+                  isLoading={isLoading}
+                  onClose={closeAllPopups}
+                  onUpdateUser={handleUpdateUser}
+                />
+                <EditAvatarPopup
+                  isOpen={isEditAvatarPopupOpen}
+                  isLoading={isLoading}
+                  onClose={closeAllPopups}
+                  onUpdateAvatar={handleUpdateAvatar}
+                />
+                <AddPlacePopup
+                  isOpen={isAddPlacePopupOpen}
+                  isLoading={isLoading}
+                  onClose={closeAllPopups}
+                  onAddPlace={handleAddPlace}
+                />
+                <DeleteConfirmPopup
+                  isOpen={!!cardForDelete}
+                  isLoading={isLoading}
+                  onClose={closeAllPopups}
+                  onDeletePlace={handleCardDelete}
+                />
 
-        <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+                <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+              </>
+            ) : <Redirect to="/sign-in" />}
+          </Route>
+          <Route>
+            {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />};
+          </Route>
+        </Switch>
       </div>
     </CurrentUserContext.Provider>
   );
