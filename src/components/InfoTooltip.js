@@ -1,6 +1,6 @@
 import React from "react";
 
-function RegistrationResultPopup({isRegistrationSuccessful, isOpen, onClose}) {
+function InfoTooltip({isRegistrationSuccessful, isOpen, onClose}) {
   return (
     <section className={`popup popup_type_common ${isOpen? 'popup_opened' : ''}`} onMouseDown={onClose}>
       <div className="popup__container popup__container_content_common" onMouseDown={evt => evt.stopPropagation()}>
@@ -12,4 +12,4 @@ function RegistrationResultPopup({isRegistrationSuccessful, isOpen, onClose}) {
   );
 }
 
-export default RegistrationResultPopup;
+export default InfoTooltip;

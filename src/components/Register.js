@@ -2,11 +2,9 @@ import AuthComponent from "./AuthComponent";
 import {Link} from 'react-router-dom';
 import Header from "./Header";
 import React from "react";
-import RegistrationResultPopup from "./RegistrationResultPopup";
+import InfoTooltip from "./InfoTooltip";
 
 function Register() {
-  let isOpen=true;
-  let isRegistrationSuccessful=false;
   return (
     <>
       <Header linkName="Войти" to="/sign-in"/>
@@ -15,7 +13,7 @@ function Register() {
         <Link to="/sign-in" className="auth__link" exact>Уже зарегистрированы? Войти</Link>
       </AuthComponent>
 
-      <RegistrationResultPopup isRegistrationSuccessful={isRegistrationSuccessful} isOpen={isOpen} />
+      {/*<InfoTooltip isRegistrationSuccessful={isRegistrationSuccessful} isOpen={isOpen} />*/}
     </>
   );
 }
