@@ -8,7 +8,7 @@ function DeleteConfirmPopup({isOpen, isLoading, onClose, onDeletePlace}) {
   };
 
   return (
-    <PopupWithForm name="confirmation" title="Вы уверены?" buttonName="Да" isOpen={isOpen} isLoading={isLoading} onClose={onClose} onSubmit={handleSubmit}/>
+    <PopupWithForm title="Вы уверены?" buttonName="Да" isOpen={isOpen} isLoading={isLoading} onClose={onClose} onSubmit={handleSubmit}/>
   );
 }
 

@@ -31,11 +31,8 @@
 @import url(./blocks/element/__drop-button/element__drop-button.css);
 @import url(./blocks/element/__drop-button/_hidden/element__drop-button_hidden.css);
 @import url(./blocks/popup/popup.css);
-@import url(./blocks/popup/_type/popup_type_profile.css);
-@import url(./blocks/popup/_type/popup_type_new-place.css);
 @import url(./blocks/popup/_type/popup_type_image.css);
-@import url(./blocks/popup/_type/popup_type_confirmation.css);
-@import url(./blocks/popup/_type/popup_type_new-avatar.css);
+@import url(./blocks/popup/_type/popup_type_common.css);
 @import url(./blocks/popup/_opened/popup_opened.css);
 @import url(./blocks/popup/__container/popup__container.css);
 @import url(./blocks/popup/__container/_content/popup__container_content_common.css);
@@ -53,6 +50,10 @@
 @import url(./blocks/popup/__caption/popup__caption.css);
 @import url(./blocks/popup/__error/popup__error.css);
 @import url(./blocks/popup/__error/_visible/popup__error_visible.css);
+@import url(./blocks/popup/__icon/popup__icon.css);
+@import url(./blocks/popup/__icon/_status/popup__icon_status_ok.css);
+@import url(./blocks/popup/__icon/_status/popup__icon_status_fail.css);
+@import url(./blocks/popup/__message/popup__message.css);
 @import url(./blocks/auth/auth.css);
 @import url(./blocks/auth/__heading/auth__heading.css);
 @import url(./blocks/auth/__form/auth__form.css);

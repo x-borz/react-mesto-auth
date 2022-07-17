@@ -24,7 +24,7 @@ function AddPlacePopup({isOpen, isLoading, onClose, onAddPlace}) {
   }, [isOpen])
 
   return (
-    <PopupWithForm name="new-place" title="Новое место" buttonName="Создать" isOpen={isOpen} isLoading={isLoading} onClose={onClose} onSubmit={handleSubmit}>
+    <PopupWithForm title="Новое место" buttonName="Создать" isOpen={isOpen} isLoading={isLoading} onClose={onClose} onSubmit={handleSubmit}>
       <input id="place-name" className="popup__input popup__input_el_place-name" type="text" placeholder="Название" required minLength="2" maxLength="30" name="name" value={name} onChange={handleChange}/>
       <span className="place-name-error popup__error"></span>
       <input id="image-link" className="popup__input popup__input_el_image-link" type="url" placeholder="Ссылка на картинку" required name="link" value={link} onChange={handleChange}/>

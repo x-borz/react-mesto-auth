@@ -19,11 +19,11 @@ function PopupWithForm({name, title, isOpen, isLoading, buttonName, onClose, onS
   }, [isOpen]);
 
   return (
-    <section className={`popup popup_type_${name} ${isOpen? 'popup_opened' : ''}`} onMouseDown={onClose}>
+    <section className={`popup popup_type_common ${isOpen? 'popup_opened' : ''}`} onMouseDown={onClose}>
       <div className="popup__container popup__container_content_common" onMouseDown={evt => evt.stopPropagation()}>
         <button className="popup__close-button" type="button" onMouseDown={onClose}></button>
         <h2 className={`popup__heading ${name === 'confirmation'? 'popup__heading_type_confirmation' : ''}`}>{title}</h2>
-        <form className="popup__form popup__form_type_profile" name={name} onSubmit={onSubmit} noValidate ref={form}>
+        <form className="popup__form popup__form_type_profile" onSubmit={onSubmit} noValidate ref={form}>
           {children}
           <button className="popup__submit-button" type="submit">{isLoading? 'Сохранение...' : buttonName}</button>
         </form>
