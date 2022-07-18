@@ -11,6 +11,7 @@ function Header({email, onSignOut}) {
         <Link className="header__link" to="/sign-in">Войти</Link>
       </Route>
       <Route exact path="/">
+        <button className="header__button" type="button"></button>
         <p className="header__email">{email}</p>
         <Link className="header__link" to="/sign-in" onClick={onSignOut}>Выйти</Link>
       </Route>

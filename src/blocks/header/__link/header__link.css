@@ -23,7 +23,6 @@
 
 @media screen and (max-width: 635px) {
   .header__link {
-    font-size: 14px;
-    margin-right: 30px;
+    display: none;
   }
 }
