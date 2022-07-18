@@ -1,8 +1,7 @@
 import AuthComponent from "./AuthComponent";
-import Header from "./Header";
 import React from "react";
 import auth from "../utils/auth";
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 function Login({handleLogin, showTooltip}) {
   const history = useHistory();
@@ -11,7 +10,7 @@ function Login({handleLogin, showTooltip}) {
     auth.authorize(email, password)
       .then(data => {
         if (data.token) {
-          handleLogin();
+          handleLogin(email);
           history.push('/');
         }
       })
@@ -22,12 +21,7 @@ function Login({handleLogin, showTooltip}) {
   }
 
   return (
-    <>
-      <Header>
-        <Link className="header__link" to="/sign-up">Регистрация</Link>
-      </Header>
-      <AuthComponent title="Вход" buttonName="Войти" onSubmit={onLogin} />
-    </>
+    <AuthComponent title="Вход" buttonName="Войти" onSubmit={onLogin} />
   );
 }
 

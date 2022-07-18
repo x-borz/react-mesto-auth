@@ -1,6 +1,4 @@
-import Header from "./Header";
 import Main from "./Main";
-import Footer from "./Footer";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
@@ -113,9 +111,6 @@ function Cards({currentUser, setCurrentUser}) {
 
   return (
     <>
-      <Header>
-        <button className="">Выйти</button>
-      </Header>
       <Main
         cards={cards}
         onEditProfile={handleEditProfileClick}
@@ -125,7 +120,6 @@ function Cards({currentUser, setCurrentUser}) {
         onCardLike={handleCardLike}
         onCardDeleteClick={handleCardDeleteClick}
       />
-      <Footer />
 
       <EditProfilePopup
         isOpen={isEditProfilePopupOpen}

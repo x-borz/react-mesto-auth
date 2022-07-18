@@ -56,7 +56,7 @@ class Auth {
         } else {
           return Promise.reject(`Ошибка: ${response.status}`);
         }
-      })
+      });
   }
 }
 

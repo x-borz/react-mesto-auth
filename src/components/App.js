@@ -7,6 +7,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import Cards from "./Cards";
 import InfoTooltip from "./InfoTooltip";
 import auth from "../utils/auth";
+import Header from "./Header";
+import Footer from "./Footer";
 
 function App() {
   const history = useHistory();
@@ -15,14 +17,23 @@ function App() {
   const [isRegistrationSuccessful, setIsRegistrationSuccessful] = React.useState(false);
   const [isTooltipOpened, setIsTooltipOpened] = React.useState(false);
   const [loggedIn, setLoggedIn] = React.useState(false);
+  const [email, setEmail] = React.useState("");
 
   const showTooltip = isSuccessful => {
     setIsTooltipOpened(true);
     setIsRegistrationSuccessful(isSuccessful);
   }
 
-  const handleLogin = () => {
+  const handleLogin = email => {
     setLoggedIn(true);
+    setEmail(email);
+  }
+
+  const onSignOut = () => {
+    localStorage.removeItem('token');
+    history.push('/sign-in');
+    setLoggedIn(false);
+    setEmail("");
   }
 
   React.useEffect(() => {
@@ -31,7 +42,7 @@ function App() {
       auth.checkToken(token)
         .then(res => {
           if (res) {
-            setLoggedIn(true);
+            handleLogin(res.data.email);
             history.push("/");
           }
         });
@@ -41,7 +52,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <InfoTooltip isRegistrationSuccessful={isRegistrationSuccessful} isOpened={isTooltipOpened} onClose={() => setIsTooltipOpened(false)}/>
+        <Header email={email} onSignOut={onSignOut}/>
         <Switch>
           <Route path="/sign-up">
             <Register showTooltip={showTooltip}/>
@@ -54,6 +65,8 @@ function App() {
             {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />};
           </Route>
         </Switch>
+        {loggedIn && <Footer />}
+        <InfoTooltip isRegistrationSuccessful={isRegistrationSuccessful} isOpened={isTooltipOpened} onClose={() => setIsTooltipOpened(false)}/>
       </div>
     </CurrentUserContext.Provider>
   );
