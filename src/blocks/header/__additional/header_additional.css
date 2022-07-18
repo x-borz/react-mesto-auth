@@ -1,0 +1,8 @@
+.header__additional {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: rgb(84, 84, 84, .7) 1px solid;
+  padding: 40px 0;
+  box-sizing: border-box;
+}

@@ -1,0 +1,15 @@
+.header__link_place_main {
+  margin-left: 24px;
+}
+
+@media screen and (max-width: 920px) {
+  .header__link_place_main {
+    margin-right: 35px;
+  }
+}
+
+@media screen and (max-width: 635px) {
+  .header__link_place_main {
+    display: none;
+  }
+}

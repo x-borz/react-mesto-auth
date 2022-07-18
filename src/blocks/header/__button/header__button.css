@@ -1,8 +1,8 @@
 .header__button {
   display: none;
-  margin-right: 30px;
+  margin: 3px 30px 0 0;
   width: 24px;
-  height: 18px;
+  height: 24px;
   border: none;
   background-image: url("../../../images/more-icon.svg");
   background-size: contain;

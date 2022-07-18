@@ -1,5 +1,4 @@
 .header__link {
-  margin-left: 24px;
   text-decoration: none;
   outline: none;
   font-style: normal;
@@ -13,16 +12,4 @@
 
 .header__link:hover {
   opacity: .6;
-}
-
-@media screen and (max-width: 920px) {
-  .header__link {
-    margin-right: 35px;
-  }
-}
-
-@media screen and (max-width: 635px) {
-  .header__link {
-    display: none;
-  }
 }

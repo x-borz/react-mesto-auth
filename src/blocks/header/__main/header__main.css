@@ -1,0 +1,12 @@
+.header__main {
+  display: flex;
+  padding: 45px 0 40px 0;
+  box-sizing: border-box;
+  border-bottom: rgb(84, 84, 84, .7) 1px solid;
+}
+
+@media screen and (max-width: 635px) {
+  .header__main {
+    padding: 28px 0 28px 0;
+  }
+}
