@@ -1,5 +1,5 @@
 .header__link_place_main {
-  margin-left: 24px;
+  margin: 8px 0 0 24px;
 }
 
 @media screen and (max-width: 920px) {

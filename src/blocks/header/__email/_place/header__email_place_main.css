@@ -1,3 +1,7 @@
+.header__email_place_main {
+  margin-top: 8px;
+}
+
 @media screen and (max-width: 635px) {
   .header__email_place_main {
     display: none;
