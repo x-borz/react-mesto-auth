@@ -113,7 +113,9 @@ function Cards({currentUser, setCurrentUser}) {
 
   return (
     <>
-      <Header />
+      <Header>
+        <button className="">Выйти</button>
+      </Header>
       <Main
         cards={cards}
         onEditProfile={handleEditProfileClick}

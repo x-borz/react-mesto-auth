@@ -1,19 +1,32 @@
 import AuthComponent from "./AuthComponent";
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import Header from "./Header";
 import React from "react";
-import InfoTooltip from "./InfoTooltip";
+import auth from "../utils/auth";
 
-function Register() {
+function Register({showTooltip}) {
+  const history = useHistory();
+
+  const onRegister = (email, password) => {
+    auth.register(email, password)
+      .then(res => {
+        showTooltip(true);
+        history.push('/sign-in');
+      })
+      .catch(err => {
+        console.log(err);
+        showTooltip(false);
+      });
+  }
+
   return (
     <>
-      <Header linkName="Войти" to="/sign-in"/>
-
-      <AuthComponent title="Регистрация" buttonName="Зарегистрироваться">
-        <Link to="/sign-in" className="auth__link" exact>Уже зарегистрированы? Войти</Link>
+      <Header>
+        <Link className="header__link" to="/sign-in">Войти</Link>
+      </Header>
+      <AuthComponent title="Регистрация" buttonName="Зарегистрироваться" onSubmit={onRegister}>
+        <Link to="/sign-in" className="auth__link">Уже зарегистрированы? Войти</Link>
       </AuthComponent>
-
-      {/*<InfoTooltip isRegistrationSuccessful={isRegistrationSuccessful} isOpen={isOpen} />*/}
     </>
   );
 }

@@ -12,3 +12,11 @@ export const apiOptions = {
     authorization: 'e54fe21d-9764-47c4-b2ad-473d479b0a70'
   }
 };
+
+
+export const authParams = {
+  baseUrl: 'https://auth.nomoreparties.co',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+}
