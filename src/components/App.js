@@ -14,22 +14,48 @@ function App() {
   const history = useHistory();
 
   const [currentUser, setCurrentUser] = React.useState({});
-  const [isRegistrationSuccessful, setIsRegistrationSuccessful] = React.useState(false);
+  const [isSuccessful, setIsSuccessful] = React.useState(false);
   const [isTooltipOpened, setIsTooltipOpened] = React.useState(false);
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [email, setEmail] = React.useState("");
 
   const showTooltip = isSuccessful => {
     setIsTooltipOpened(true);
-    setIsRegistrationSuccessful(isSuccessful);
+    setIsSuccessful(isSuccessful);
   }
 
-  const handleLogin = email => {
+  const login = email => {
     setLoggedIn(true);
     setEmail(email);
   }
 
-  const onSignOut = () => {
+  const handleRegister = (email, password) => {
+    auth.register(email, password)
+      .then(res => {
+        showTooltip(true);
+        history.push('/sign-in');
+      })
+      .catch(err => {
+        console.log(err);
+        showTooltip(false);
+      });
+  }
+
+  const handleLogin = (email, password) => {
+    auth.authorize(email, password)
+      .then(data => {
+        if (data.token) {
+          login(email);
+          history.push('/');
+        }
+      })
+      .catch(err => {
+        console.log(err)
+        showTooltip(false);
+      });
+  }
+
+  const handleSignOut = () => {
     localStorage.removeItem('token');
     history.push('/sign-in');
     setLoggedIn(false);
@@ -42,7 +68,7 @@ function App() {
       auth.checkToken(token)
         .then(res => {
           if (res) {
-            handleLogin(res.data.email);
+            login(res.data.email);
             history.push("/");
           }
         });
@@ -52,13 +78,13 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <Header email={email} onSignOut={onSignOut}/>
+        <Header email={email} onSignOut={handleSignOut}/>
         <Switch>
           <Route path="/sign-up">
-            <Register showTooltip={showTooltip}/>
+            <Register onRegister={handleRegister}/>
           </Route>
           <Route path="/sign-in">
-            <Login handleLogin={handleLogin} showTooltip={showTooltip}/>
+            <Login onLogin={handleLogin}/>
           </Route>
           <ProtectedRoute path="/" loggedIn={loggedIn} currentUser={currentUser} setCurrentUser={setCurrentUser} component={Cards}/>
           <Route path="*">
@@ -66,7 +92,7 @@ function App() {
           </Route>
         </Switch>
         {loggedIn && <Footer />}
-        <InfoTooltip isRegistrationSuccessful={isRegistrationSuccessful} isOpened={isTooltipOpened} onClose={() => setIsTooltipOpened(false)}/>
+        <InfoTooltip isSuccessful={isSuccessful} isOpened={isTooltipOpened} onClose={() => setIsTooltipOpened(false)}/>
       </div>
     </CurrentUserContext.Provider>
   );
