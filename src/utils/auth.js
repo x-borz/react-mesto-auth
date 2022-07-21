@@ -33,18 +33,12 @@ class Auth {
         } else {
           return Promise.reject(`Ошибка: ${response.status}`);
         }
-      })
-      .then(data => {
-        if (data.token) {
-          localStorage.setItem('token', data.token);
-          return data;
-        }
       });
   }
 
   checkToken(token) {
     const headers = Object.assign({}, this._headers);
-    headers["Authorization"] = `Bearer ${token}`
+    headers["Authorization"] = `Bearer ${token}`;
 
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',

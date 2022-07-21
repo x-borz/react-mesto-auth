@@ -45,12 +45,13 @@ function App() {
     auth.authorize(email, password)
       .then(data => {
         if (data.token) {
+          localStorage.setItem('token', data.token);
           login(email);
           history.push('/');
         }
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
         showTooltip(false);
       });
   }
