@@ -16,10 +16,10 @@ function Header({email, onSignOut}) {
 
   return (
     <header className="header page__header">
-      <div className={`header__additional ${isAdditionalHeaderVisible? 'header__additional_visible' : ''}`}>
+      <section className={`header__additional ${isAdditionalHeaderVisible? 'header__additional_visible' : ''}`}>
         <p className="header__email">{email}</p>
         <Link className="header__link header__link_place_additional" to="/sign-in" onClick={handleSignOut}>Выйти</Link>
-      </div>
+      </section>
       <section className="header__main">
         <a className="header__logo" href="#"></a>
         <Route exact path="/sign-in">
