@@ -5,6 +5,18 @@
   align-items: center;
 }
 
+@media screen and (max-width: 929px) {
+  .profile {
+    padding: 40px 35px 0 35px;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .profile {
+    padding: 40px 16px 0 16px;
+  }
+}
+
 @media screen and (max-width: 635px) {
   .profile {
     padding: 42px 0 0 0;

@@ -2,7 +2,7 @@
   margin: 0 auto;
 }
 
-@media screen and (max-width: 929px) {
+@media screen and (max-width: 880px) {
   .page__section {
     margin: 0 19px;
   }
